@@ -1,0 +1,118 @@
+{% comment %}
+  Collection template - renders a collection page with products
+{% endcomment %}
+
+<div class="page-width">
+  <div class="collection-header">
+    <h1 class="collection-header__title">{{ collection.title }}</h1>
+    
+    {% if collection.description != blank %}
+      <div class="collection-header__description">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+
+    {% if collection.image %}
+      <div class="collection-header__image">
+        <img src="{{ collection.image | image_url: width: 1200 }}" 
+             alt="{{ collection.image.alt | escape }}"
+             width="1200" height="400">
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="collection-toolbar">
+    <div class="collection-toolbar__item collection-toolbar__item--left">
+      <label for="SortBy">Sort by:</label>
+      <select name="sort_by" id="SortBy" class="collection-toolbar__input">
+        <option value="manual">Featured</option>
+        <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+        <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>Alphabetically, A-Z</option>
+        <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>Alphabetically, Z-A</option>
+        <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price, low to high</option>
+        <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price, high to low</option>
+        <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>Date, old to new</option>
+        <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Date, new to old</option>
+      </select>
+    </div>
+
+    <div class="collection-toolbar__item collection-toolbar__item--right">
+      <span class="collection-toolbar__count">
+        {% if collection.products_count == 1 %}
+          {{ collection.products_count }} product
+        {% else %}
+          {{ collection.products_count }} products
+        {% endif %}
+      </span>
+    </div>
+  </div>
+
+  {% if collection.products.size > 0 %}
+    <div class="collection-grid">
+      {% paginate collection.products by 12 %}
+        <div class="product-grid product-grid--collection">
+          {% for product in collection.products %}
+            <div class="product-grid__item">
+              {% render 'product-card', product_card_product: product %}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          <div class="pagination-wrapper">
+            <nav class="pagination" role="navigation" aria-label="Pagination">
+              {% if paginate.previous %}
+                <a href="{{ paginate.previous.url }}" class="pagination__item pagination__item--prev" aria-label="Previous page">
+                  &#8592; Previous
+                </a>
+              {% endif %}
+
+              {% for part in paginate.parts %}
+                {% if part.is_link %}
+                  <a href="{{ part.url }}" class="pagination__item" aria-label="Page {{ part.title }}">
+                    {{ part.title }}
+                  </a>
+                {% else %}
+                  {% if part.title == paginate.current_page %}
+                    <span class="pagination__item pagination__item--current" aria-current="page" aria-label="Page {{ part.title }}">
+                      {{ part.title }}
+                    </span>
+                  {% else %}
+                    <span class="pagination__item">{{ part.title }}</span>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              {% if paginate.next %}
+                <a href="{{ paginate.next.url }}" class="pagination__item pagination__item--next" aria-label="Next page">
+                  Next &#8594;
+                </a>
+              {% endif %}
+            </nav>
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    </div>
+  {% else %}
+    <div class="collection-empty">
+      <h2>No products found</h2>
+      <p>This collection is empty.</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn">Shop All Products</a>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  // Collection sorting
+  document.addEventListener('DOMContentLoaded', function() {
+    const sortBy = document.getElementById('SortBy');
+    
+    if (sortBy) {
+      sortBy.addEventListener('change', function() {
+        const url = new URL(window.location);
+        url.searchParams.set('sort_by', this.value);
+        window.location.href = url.href;
+      });
+    }
+  });
+</script>

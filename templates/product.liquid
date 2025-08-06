@@ -1,0 +1,139 @@
+{% comment %}
+  Product template - renders a single product page
+{% endcomment %}
+
+<div class="page-width">
+  <div class="product-single">
+    <div class="product-single__photos">
+      {% if product.images.size > 0 %}
+        <div class="product-single__photo">
+          <img src="{{ product.featured_image | image_url: width: 600 }}" 
+               alt="{{ product.featured_image.alt | escape }}"
+               width="600" height="600">
+        </div>
+        
+        {% if product.images.size > 1 %}
+          <div class="product-single__thumbnails">
+            {% for image in product.images limit: 4 %}
+              <img src="{{ image | image_url: width: 150 }}" 
+                   alt="{{ image.alt | escape }}"
+                   width="150" height="150"
+                   class="product-single__thumbnail">
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="product-single__photo">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-single__details">
+      <h1 class="product-single__title">{{ product.title }}</h1>
+      
+      <div class="product-single__price">
+        {% if product.compare_at_price > product.price %}
+          <span class="product-single__price--sale">{{ product.price | money }}</span>
+          <span class="product-single__price--compare">{{ product.compare_at_price | money }}</span>
+        {% else %}
+          <span class="product-single__price--regular">{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+
+      {% if product.description != blank %}
+        <div class="product-single__description">
+          {{ product.description }}
+        </div>
+      {% endif %}
+
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+        {% unless product.has_only_default_variant %}
+          <div class="product-single__variants">
+            {% for option in product.options_with_values %}
+              <div class="product-single__option">
+                <label for="Option{{ forloop.index }}">{{ option.name }}</label>
+                <select name="options[{{ option.name | escape }}]" id="Option{{ forloop.index }}" class="product-single__option-selector">
+                  {% for value in option.values %}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                      {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        <select name="id" id="productSelect" class="product-single__variants">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" 
+                    {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                    {% unless variant.available %}disabled{% endunless %}>
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+
+        <div class="product-single__add-to-cart">
+          <button type="submit" name="add" class="btn product-single__cart-submit" 
+                  {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+            {% if product.selected_or_first_available_variant.available %}
+              Add to Cart
+            {% else %}
+              Sold Out
+            {% endif %}
+          </button>
+        </div>
+      </form>
+
+      {% if product.tags.size > 0 %}
+        <div class="product-single__tags">
+          <strong>Tags:</strong>
+          {% for tag in product.tags %}
+            <span class="product-single__tag">{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if product.description contains '[tab:' %}
+    <div class="product-single__tabs">
+      <!-- Product tabs would go here -->
+    </div>
+  {% endif %}
+
+  {% comment %} Related products {% endcomment %}
+  {% if collections['related-products'].products.size > 0 %}
+    <div class="product-single__related">
+      <h3>Related Products</h3>
+      <div class="product-grid">
+        {% for product in collections['related-products'].products limit: 4 %}
+          {% render 'product-card', product_card_product: product %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  // Product variant selection
+  document.addEventListener('DOMContentLoaded', function() {
+    const productSelect = document.getElementById('productSelect');
+    const addToCartButton = document.querySelector('.product-single__cart-submit');
+    
+    if (productSelect) {
+      productSelect.addEventListener('change', function() {
+        const selectedVariant = this.options[this.selectedIndex];
+        if (selectedVariant.disabled) {
+          addToCartButton.disabled = true;
+          addToCartButton.textContent = 'Sold Out';
+        } else {
+          addToCartButton.disabled = false;
+          addToCartButton.textContent = 'Add to Cart';
+        }
+      });
+    }
+  });
+</script>

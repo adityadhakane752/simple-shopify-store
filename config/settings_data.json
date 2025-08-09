@@ -1,19 +1,14 @@
 {
-	"current": {
-		"color_schemes": {
-			"background-1": {
-				"bg": "#f5f7fa",
-				"text": "#333333"
-			},
-			"background-2": {
-				"bg": "#c3cfe2",
-				"text": "#333333"
-			},
-			"gradient-1": {
-				"start": "#667eea",
-				"end": "#764ba2",
-				"text": "#ffffff"
-			}
-		}
-	}
+  "current": {
+    "color_primary": "#667eea",
+    "color_secondary": "#764ba2", 
+    "color_text": "#333333",
+    "color_background_1": "#ffffff",
+    "color_background_2": "#f5f7fa",
+    "color_accent_1": "#667eea",
+    "color_accent_2": "#764ba2",
+    "font_body": "assistant_n4",
+    "font_heading": "assistant_n4",
+    "container_width": 1200
+  }
 }

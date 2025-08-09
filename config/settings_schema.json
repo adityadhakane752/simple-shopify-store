@@ -35,32 +35,32 @@
     "name": "Color Schemes",
     "settings": [
       {
-        "type": "color_scheme",
-        "id": "background-1",
+        "type": "header",
+        "content": "Color scheme settings"
+      },
+      {
+        "type": "color",
+        "id": "color_background_1",
         "label": "Background 1",
-        "colors": [
-          { "label": "Background", "id": "bg", "default": "#f5f7fa" },
-          { "label": "Text", "id": "text", "default": "#333333" }
-        ]
+        "default": "#ffffff"
       },
       {
-        "type": "color_scheme",
-        "id": "background-2",
+        "type": "color",
+        "id": "color_background_2", 
         "label": "Background 2",
-        "colors": [
-          { "label": "Background", "id": "bg", "default": "#c3cfe2" },
-          { "label": "Text", "id": "text", "default": "#333333" }
-        ]
+        "default": "#f5f7fa"
       },
       {
-        "type": "color_scheme",
-        "id": "gradient-1",
-        "label": "Gradient 1",
-        "colors": [
-          { "label": "Gradient Start", "id": "start", "default": "#667eea" },
-          { "label": "Gradient End", "id": "end", "default": "#764ba2" },
-          { "label": "Text", "id": "text", "default": "#ffffff" }
-        ]
+        "type": "color",
+        "id": "color_accent_1",
+        "label": "Accent 1",
+        "default": "#667eea"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_2",
+        "label": "Accent 2", 
+        "default": "#764ba2"
       }
     ]
   },
@@ -71,13 +71,13 @@
         "type": "font_picker",
         "id": "font_body",
         "label": "Body Font",
-        "default": "system"
+        "default": "assistant_n4"
       },
       {
         "type": "font_picker", 
         "id": "font_heading",
         "label": "Heading Font",
-        "default": "system"
+        "default": "assistant_n4"
       }
     ]
   },

@@ -1,0 +1,233 @@
+{% comment %}
+  Smart Ring Product Showcase - Shows sample products even when no real products exist
+{% endcomment %}
+
+<div class="smart-ring-showcase color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="title-wrapper-with-link">
+      <h2 class="featured-collection__title inline-richtext {{ section.settings.heading_size }}">
+        {{ section.settings.title | default: "Smart Ring Collection" }}
+      </h2>
+    </div>
+
+    <div class="product-grid grid grid--2-col-tablet-down grid--4-col-desktop">
+      <!-- ZenRing Pro Health -->
+      <div class="product-card-wrapper grid__item">
+        <div class="card">
+          <div class="card__media">
+            <div class="media media--transparent media--square">
+              <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-size: 16px; border-radius: 8px; position: relative;">
+                <div style="width: 100px; height: 100px; border: 4px solid rgba(255,255,255,0.8); border-radius: 50%; margin-bottom: 15px; position: relative;">
+                  <div style="width: 60px; height: 60px; border: 2px solid rgba(255,255,255,0.6); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                </div>
+                <div style="font-weight: 600;">💙 Health Tracking</div>
+                <div style="font-size: 12px; opacity: 0.9;">Heart Rate • Sleep • Stress</div>
+              </div>
+            </div>
+          </div>
+          <div class="card__content">
+            <h3 class="card__heading">
+              <a href="#" class="full-unstyled-link">ZenRing Pro Health</a>
+            </h3>
+            <div class="card__information">
+              <span class="caption-large light">{{ section.settings.show_vendor }}</span>
+              <div class="price">
+                <div class="price__container">
+                  <span class="price-item price-item--regular">₹12,999</span>
+                </div>
+              </div>
+              <p class="card__description">24/7 health monitoring with heart rate, SpO2, and sleep tracking optimized for Indian lifestyles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZenRing Pro Fitness -->
+      <div class="product-card-wrapper grid__item">
+        <div class="card">
+          <div class="card__media">
+            <div class="media media--transparent media--square">
+              <div style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-size: 16px; border-radius: 8px; position: relative;">
+                <div style="width: 100px; height: 100px; border: 4px solid rgba(255,255,255,0.8); border-radius: 50%; margin-bottom: 15px; position: relative;">
+                  <div style="width: 60px; height: 60px; border: 2px solid rgba(255,255,255,0.6); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                </div>
+                <div style="font-weight: 600;">🏃 Fitness Pro</div>
+                <div style="font-size: 12px; opacity: 0.9;">Workouts • Steps • Calories</div>
+              </div>
+            </div>
+          </div>
+          <div class="card__content">
+            <h3 class="card__heading">
+              <a href="#" class="full-unstyled-link">ZenRing Pro Fitness</a>
+            </h3>
+            <div class="card__information">
+              <span class="caption-large light">{{ section.settings.show_vendor }}</span>
+              <div class="price price--on-sale">
+                <div class="price__container">
+                  <span class="price-item price-item--regular">₹15,999</span>
+                  <span class="price-item price-item--sale">₹11,999</span>
+                </div>
+              </div>
+              <p class="card__description">Advanced fitness tracking with workout detection and performance analytics for active Indians.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZenRing Pro Sleep -->
+      <div class="product-card-wrapper grid__item">
+        <div class="card">
+          <div class="card__media">
+            <div class="media media--transparent media--square">
+              <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-size: 16px; border-radius: 8px; position: relative;">
+                <div style="width: 100px; height: 100px; border: 4px solid rgba(255,255,255,0.8); border-radius: 50%; margin-bottom: 15px; position: relative;">
+                  <div style="width: 60px; height: 60px; border: 2px solid rgba(255,255,255,0.6); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                </div>
+                <div style="font-weight: 600;">😴 Sleep Tracker</div>
+                <div style="font-size: 12px; opacity: 0.9;">Deep Sleep • REM • Recovery</div>
+              </div>
+            </div>
+          </div>
+          <div class="card__content">
+            <h3 class="card__heading">
+              <a href="#" class="full-unstyled-link">ZenRing Pro Sleep</a>
+            </h3>
+            <div class="card__information">
+              <span class="caption-large light">{{ section.settings.show_vendor }}</span>
+              <div class="price">
+                <div class="price__container">
+                  <span class="price-item price-item--regular">₹9,999</span>
+                </div>
+              </div>
+              <p class="card__description">Specialized sleep monitoring with smart alarm and circadian rhythm optimization.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZenRing Pro Premium -->
+      <div class="product-card-wrapper grid__item">
+        <div class="card">
+          <div class="card__media">
+            <div class="media media--transparent media--square">
+              <div style="background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%); height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-size: 16px; border-radius: 8px; position: relative;">
+                <div style="width: 100px; height: 100px; border: 4px solid rgba(255,255,255,0.8); border-radius: 50%; margin-bottom: 15px; position: relative;">
+                  <div style="width: 60px; height: 60px; border: 2px solid rgba(255,255,255,0.6); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                </div>
+                <div style="font-weight: 600;">👑 Premium Edition</div>
+                <div style="font-size: 12px; opacity: 0.9;">All Features • UPI • Premium</div>
+              </div>
+            </div>
+          </div>
+          <div class="card__content">
+            <h3 class="card__heading">
+              <a href="#" class="full-unstyled-link">ZenRing Pro Premium</a>
+            </h3>
+            <div class="card__information">
+              <span class="caption-large light">{{ section.settings.show_vendor }}</span>
+              <div class="price">
+                <div class="price__container">
+                  <span class="price-item price-item--regular">₹18,999</span>
+                </div>
+              </div>
+              <p class="card__description">Ultimate smart ring with UPI payments, GPS tracking, and premium health insights.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .smart-ring-showcase .card__description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(var(--color-foreground), 0.75);
+    margin-top: 0.5rem;
+  }
+  
+  .smart-ring-showcase .price--on-sale .price-item--regular {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+  
+  .smart-ring-showcase .price-item--sale {
+    color: rgb(var(--color-price-sale));
+    font-weight: 600;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Smart Ring Showcase",
+  "tag": "section", 
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Smart Ring Collection",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1", 
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom", 
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smart Ring Showcase"
+    }
+  ]
+}
+{% endschema %}

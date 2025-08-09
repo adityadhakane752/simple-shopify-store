@@ -1,9 +1,9 @@
 {% comment %}
-  Renders a hero banner section
+  Enhanced Hero Banner with Smart Ring Focus
 {% endcomment %}
 
-<div class="hero banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--desktop-{{ section.settings.desktop_content_position }} page-width">
-  <div class="hero__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}">
+<div class="hero-advanced banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--desktop-{{ section.settings.desktop_content_position }} page-width">
+  <div class="hero__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} hero-gradient{% endif %}">
     {%- if section.settings.image != blank -%}
       <img
         src="{{ section.settings.image | image_url: width: 1200 }}"
@@ -14,7 +14,14 @@
         loading="lazy"
       >
     {%- else -%}
-      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      <div class="hero-gradient-bg">
+        <div class="floating-rings">
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="ring ring-3"></div>
+        </div>
+        <div class="hero-pattern"></div>
+      </div>
     {%- endif -%}
   </div>
 
@@ -23,15 +30,21 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
-            <h2 class="banner__heading inline-richtext {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+            <h1 class="banner__heading hero-heading-animated inline-richtext {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
               {{ block.settings.heading }}
-            </h2>
+            </h1>
           {%- when 'text' -%}
-            <div class="banner__text rte" {{ block.shopify_attributes }}>
+            <div class="banner__text hero-text-animated rte" {{ block.shopify_attributes }}>
               <p>{{ block.settings.text }}</p>
             </div>
+          {%- when 'features' -%}
+            <div class="hero-features" {{ block.shopify_attributes }}>
+              <div class="feature-pill">🇮🇳 Made for India</div>
+              <div class="feature-pill">💧 Monsoon Ready</div>
+              <div class="feature-pill">🔋 7-Day Battery</div>
+            </div>
           {%- when 'buttons' -%}
-            <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
+            <div class="banner__buttons hero-buttons-enhanced{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
               {%- if block.settings.button_label_1 != blank -%}
                 <a
                   {% if block.settings.button_link_1 == blank %}
@@ -39,9 +52,10 @@
                   {% else %}
                     href="{{ block.settings.button_link_1 }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
+                  class="button button--primary button-glow"
                 >
                   {{- block.settings.button_label_1 | escape -}}
+                  <span class="button-icon">🛒</span>
                 </a>
               {%- endif -%}
               {%- if block.settings.button_label_2 != blank -%}
@@ -51,9 +65,10 @@
                   {% else %}
                     href="{{ block.settings.button_link_2 }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                  class="button button--secondary button-outline-glow"
                 >
                   {{- block.settings.button_label_2 | escape -}}
+                  <span class="button-icon">📱</span>
                 </a>
               {%- endif -%}
             </div>
@@ -62,6 +77,152 @@
     </div>
   </div>
 </div>
+
+<style>
+  .hero-gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .floating-rings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .ring {
+    position: absolute;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .ring-1 {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  .ring-2 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+  }
+  
+  .ring-3 {
+    width: 80px;
+    height: 80px;
+    top: 40%;
+    left: 70%;
+    animation-delay: 4s;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+  
+  .hero-heading-animated {
+    animation: slideInUp 1s ease-out;
+    background: linear-gradient(45deg, #fff, #e0e7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .hero-text-animated {
+    animation: slideInUp 1s ease-out 0.3s both;
+    font-size: 1.25rem;
+    opacity: 0.95;
+  }
+  
+  .hero-features {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    animation: slideInUp 1s ease-out 0.6s both;
+  }
+  
+  .feature-pill {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .hero-buttons-enhanced {
+    animation: slideInUp 1s ease-out 0.9s both;
+  }
+  
+  .button-glow {
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+  }
+  
+  .button-outline-glow {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .button-outline-glow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .button-icon {
+    margin-left: 0.5rem;
+    font-size: 1.1em;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-heading-animated {
+      font-size: 2.5rem;
+    }
+    
+    .hero-features {
+      justify-content: center;
+    }
+    
+    .feature-pill {
+      font-size: 0.8rem;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -177,7 +338,7 @@
         {
           "type": "inline_richtext",
           "id": "heading",
-          "default": "Welcome to our Store",
+          "default": "Revolutionary Smart Rings for India",
           "label": "Heading"
         },
         {
@@ -210,7 +371,7 @@
         {
           "type": "richtext",
           "id": "text",
-          "default": "<p>Discover our amazing products and deals!</p>",
+          "default": "<p>Track your health, monitor fitness, and stay connected with cutting-edge smart ring technology designed for Indian lifestyles.</p>",
           "label": "Text"
         }
       ]
@@ -223,7 +384,7 @@
         {
           "type": "text",
           "id": "button_label_1",
-          "default": "Shop Now",
+          "default": "Shop Smart Rings",
           "label": "Button label",
           "info": "Leave the label blank to hide the button."
         },
@@ -254,6 +415,31 @@
           "id": "button_style_secondary_2",
           "default": true,
           "label": "Use outline button style"
+        }
+      ]
+    },
+    {
+      "type": "features",
+      "name": "Feature Pills",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_1",
+          "default": "🇮🇳 Made for India",
+          "label": "Feature 1"
+        },
+        {
+          "type": "text",
+          "id": "feature_2", 
+          "default": "💧 Monsoon Ready",
+          "label": "Feature 2"
+        },
+        {
+          "type": "text",
+          "id": "feature_3",
+          "default": "🔋 7-Day Battery",
+          "label": "Feature 3"
         }
       ]
     }

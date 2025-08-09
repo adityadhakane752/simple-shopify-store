@@ -18,7 +18,11 @@
                  width="150"
                  class="header__heading-logo">
           {%- else -%}
-            <span class="h2">{{ shop.name }}</span>
+            <span class="h2 zenring-logo">
+              <span class="logo-icon">💍</span>
+              <span class="logo-text">ZenRing Pro</span>
+              <span class="logo-tagline">Smart Rings for India</span>
+            </span>
           {%- endif -%}
         </a>
       </h1>
@@ -209,6 +213,63 @@
     </div>
   </div>
 </header>
+
+<style>
+  .zenring-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .logo-icon {
+    font-size: 1.5rem;
+    animation: ringRotate 4s ease-in-out infinite;
+  }
+  
+  .logo-text {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  
+  .logo-tagline {
+    font-size: 0.7rem;
+    color: #666;
+    font-weight: 500;
+    align-self: flex-end;
+    margin-left: 0.25rem;
+  }
+  
+  @keyframes ringRotate {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+  }
+  
+  .header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .header--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .logo-tagline {
+      display: none;
+    }
+  }
+</style>
 
 {% schema %}
 {

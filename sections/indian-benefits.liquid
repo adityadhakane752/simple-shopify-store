@@ -1,0 +1,158 @@
+{% comment %}
+  Indian Market Benefits Section
+{% endcomment %}
+
+<div class="indian-benefits-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="benefits-content">
+      <h2 class="benefits-title">Perfect for Indian Lifestyle</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <span class="benefit-icon">🌧️</span>
+          <h3>Monsoon Ready</h3>
+          <p>IP68 waterproof rating withstands heavy monsoon rains and humidity</p>
+        </div>
+        
+        <div class="benefit-item">
+          <span class="benefit-icon">💳</span>
+          <h3>UPI Integration</h3>
+          <p>Seamless payments with UPI, perfect for Indian digital payment ecosystem</p>
+        </div>
+        
+        <div class="benefit-item">
+          <span class="benefit-icon">🏏</span>
+          <h3>Cricket & Sports</h3>
+          <p>Track cricket, kabaddi, and traditional Indian sports activities</p>
+        </div>
+        
+        <div class="benefit-item">
+          <span class="benefit-icon">🕉️</span>
+          <h3>Yoga & Meditation</h3>
+          <p>Specialized tracking for yoga, pranayama, and meditation sessions</p>
+        </div>
+        
+        <div class="benefit-item">
+          <span class="benefit-icon">🌡️</span>
+          <h3>Climate Adapted</h3>
+          <p>Optimized for Indian climate conditions and temperature variations</p>
+        </div>
+        
+        <div class="benefit-item">
+          <span class="benefit-icon">🇮🇳</span>
+          <h3>Made for India</h3>
+          <p>Designed with Indian health patterns and lifestyle requirements</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .indian-benefits-section {
+    background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+    color: white;
+  }
+  
+  .benefits-content {
+    text-align: center;
+  }
+  
+  .benefits-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-weight: 700;
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+  }
+  
+  .benefit-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .benefit-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .benefit-item p {
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .benefits-title {
+      font-size: 2rem;
+    }
+    
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .benefit-item {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Indian Market Benefits",
+  "tag": "section",
+  "class": "section", 
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100, 
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Indian Market Benefits"
+    }
+  ]
+}
+{% endschema %}

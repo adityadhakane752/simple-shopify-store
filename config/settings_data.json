@@ -1,1 +1,19 @@
-{}
+{
+	"current": {
+		"color_schemes": {
+			"background-1": {
+				"bg": "#f5f7fa",
+				"text": "#333333"
+			},
+			"background-2": {
+				"bg": "#c3cfe2",
+				"text": "#333333"
+			},
+			"gradient-1": {
+				"start": "#667eea",
+				"end": "#764ba2",
+				"text": "#ffffff"
+			}
+		}
+	}
+}

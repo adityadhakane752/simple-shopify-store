@@ -1,0 +1,65 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Simple Shopify Store",
+    "theme_version": "1.0.0",
+    "theme_author": "Aditya Dhakane",
+    "theme_documentation_url": "https://github.com/adityadhakane752/simple-shopify-store",
+    "theme_support_url": "https://github.com/adityadhakane752/simple-shopify-store/issues"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#007bff"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color", 
+        "default": "#6c757d"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#333333"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "system"
+      },
+      {
+        "type": "font_picker", 
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "system"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "container_width",
+        "min": 1000,
+        "max": 1400,
+        "step": 50,
+        "unit": "px",
+        "label": "Container Width",
+        "default": 1200
+      }
+    ]
+  }
+]

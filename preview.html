@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Shopify Store - Local Preview</title>
+    <link rel="stylesheet" href="assets/base.css">
+    <style>
+        /* Override Liquid variables with static values for preview */
+        :root {
+            --font-body-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-body-style: normal;
+            --font-body-weight: 400;
+            --font-heading-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-heading-style: normal;
+            --font-heading-weight: 600;
+            --color-base-text: 33, 33, 33;
+            --color-base-background-1: 255, 255, 255;
+            --color-base-background-2: 248, 248, 248;
+            --page-width: 120rem;
+        }
+        
+        /* Mock Shopify placeholder styles */
+        .placeholder-svg {
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="gradient">
+    <!-- Header -->
+    <header class="header">
+        <div class="header__wrapper page-width">
+            <div class="header__heading-link">
+                <h1 class="header__heading">
+                    <a href="#" class="header__heading-link">
+                        <span class="h2">Your Store Name</span>
+                    </a>
+                </h1>
+            </div>
+
+            <nav class="header__inline-menu">
+                <ul class="list-menu list-menu--inline">
+                    <li><a href="#" class="header__menu-item">Home</a></li>
+                    <li><a href="#" class="header__menu-item">Products</a></li>
+                    <li><a href="#" class="header__menu-item">Collections</a></li>
+                    <li><a href="#" class="header__menu-item">About</a></li>
+                    <li><a href="#" class="header__menu-item">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__icons">
+                <a href="#" class="header__icon">🔍</a>
+                <a href="#" class="header__icon">👤</a>
+                <a href="#" class="header__icon">
+                    🛒
+                    <div class="cart-count-bubble">
+                        <span>2</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="MainContent" class="content-for-layout">
+        <!-- Hero Section -->
+        <div class="hero banner page-width">
+            <div class="hero__media media">
+                <div class="placeholder-svg" style="height: 400px;">
+                    Hero Image Placeholder
+                </div>
+            </div>
+            <div class="hero__text-wrapper">
+                <div class="hero__text banner__box">
+                    <h2 class="banner__heading">Welcome to Our Store</h2>
+                    <div class="banner__text">
+                        <p>Discover our amazing products and deals!</p>
+                    </div>
+                    <div class="banner__buttons">
+                        <a href="#" class="button">Shop Now</a>
+                        <a href="#" class="button button--secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Products -->
+        <div class="featured-collection section-padding">
+            <div class="page-width">
+                <h2 class="featured-collection__title">Featured Products</h2>
+                
+                <div class="product-grid">
+                    <!-- Product Card 1 -->
+                    <div class="product-card-wrapper">
+                        <div class="card">
+                            <div class="card__media">
+                                <div class="placeholder-svg" style="height: 250px;">
+                                    Product Image
+                                </div>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__heading">
+                                    <a href="#">Sample Product 1</a>
+                                </h3>
+                                <div class="price">
+                                    <span class="price-item--regular">$29.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="product-card-wrapper">
+                        <div class="card">
+                            <div class="card__media">
+                                <div class="placeholder-svg" style="height: 250px;">
+                                    Product Image
+                                </div>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__heading">
+                                    <a href="#">Sample Product 2</a>
+                                </h3>
+                                <div class="price price--on-sale">
+                                    <span class="price-item--regular">$39.99</span>
+                                    <span class="price-item--sale">$24.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="product-card-wrapper">
+                        <div class="card">
+                            <div class="card__media">
+                                <div class="placeholder-svg" style="height: 250px;">
+                                    Product Image
+                                </div>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__heading">
+                                    <a href="#">Sample Product 3</a>
+                                </h3>
+                                <div class="price">
+                                    <span class="price-item--regular">$19.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="product-card-wrapper">
+                        <div class="card">
+                            <div class="card__media">
+                                <div class="placeholder-svg" style="height: 250px;">
+                                    Product Image
+                                </div>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__heading">
+                                    <a href="#">Sample Product 4</a>
+                                </h3>
+                                <div class="price">
+                                    <span class="price-item--regular">$49.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__content-top page-width">
+            <div class="footer__content-top-inner">
+                <div class="footer-block">
+                    <h2 class="footer-block__heading">Quick Links</h2>
+                    <ul class="footer-block__details-content">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-block">
+                    <h2 class="footer-block__heading">Support</h2>
+                    <ul class="footer-block__details-content">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-block">
+                    <h2 class="footer-block__heading">Newsletter</h2>
+                    <p>Subscribe to get special offers and updates.</p>
+                    <form class="footer__newsletter">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input">
+                        <button type="submit" class="button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer__content-bottom">
+            <div class="footer__content-bottom-wrapper page-width">
+                <p class="footer__copyright">© 2024, Your Store Name</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/global.js"></script>
+</body>
+</html>

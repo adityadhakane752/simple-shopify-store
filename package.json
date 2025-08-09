@@ -1,0 +1,38 @@
+{
+  "name": "simple-shopify-store",
+  "version": "1.0.0",
+  "description": "A simple Shopify theme built with Liquid templating language",
+  "main": "layout/theme.liquid",
+  "scripts": {
+    "dev": "shopify theme dev",
+    "start": "concurrently \"npx http-server -p 3000 -o\" \"npx nodemon --watch . --ext liquid,css,js --exec echo 'Files changed - refresh browser'\"",
+    "serve": "npx http-server -p 3000 -o",
+    "watch": "npx nodemon --watch . --ext liquid,css,js --exec echo 'Files changed at %time%'",
+    "preview": "start preview.html && npx http-server -p 3000 -o",
+    "deploy": "shopify theme push",
+    "pull": "shopify theme pull",
+    "check": "shopify theme check",
+    "package": "shopify theme package",
+    "zip": "powershell Compress-Archive -Path layout,templates,sections,snippets,assets,config -DestinationPath simple-shopify-theme.zip -Force",
+    "build": "npm run check && npm run zip",
+    "local": "python -m http.server 8000"
+  },
+  "keywords": [
+    "shopify",
+    "theme",
+    "liquid",
+    "ecommerce"
+  ],
+  "author": "Aditya Dhakane",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adityadhakane752/simple-shopify-store.git"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3.83.3",
+    "http-server": "^14.1.1",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2"
+  }
+}
